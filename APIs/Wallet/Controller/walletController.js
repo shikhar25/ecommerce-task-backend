@@ -136,7 +136,7 @@ const makeTransaction = async (req, res) => {
 //=========================== Remaining Balance =======================//
 
 const balance = async (req, res) => {
-  const id = req.params.userId;
+  const id = req.params.user;
   try {
     const wallet = await Wallet.findOne({ userId: id });
     if (!wallet) {
@@ -153,9 +153,7 @@ const balance = async (req, res) => {
     return errorResponse(res, 500, "Failed to retrieve balance");
   }
 };
-
 //========================== Transaction ==========================//
-
 const transactions = async (req, res) => {
   try {
     console.log("Req", req.user);
@@ -171,7 +169,6 @@ const transactions = async (req, res) => {
     errorResponse(res, 500, "Failed to retrieve transactions");
   }
 };
-
 module.exports = {
   topUp,
   withdraw,
