@@ -136,7 +136,7 @@ const makeTransaction = async (req, res) => {
 //=========================== Remaining Balance =======================//
 
 const balance = async (req, res) => {
-  const id = req.params.user;
+  const id = req.params.userId;
   try {
     const wallet = await Wallet.findOne({ userId: id });
     if (!wallet) {

@@ -6,6 +6,6 @@ const auth = require("../../../config/authJwt");
 router.post("/topup", auth, walletController.topUp);
 router.post("/withdraw", auth, walletController.withdraw);
 router.post("/transactions", auth, walletController.makeTransaction);
-router.get("/balance/:user", auth, walletController.balance);
+router.get("/balance/:userId", auth, walletController.balance);
 router.get("/transactions", auth, walletController.transactions);
 module.exports = router;
