@@ -1,0 +1,25 @@
+{
+  "name": "ecommercetask",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon main"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.4.5",
+    "express": "^4.18.3",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.2.2",
+    "nodemailer": "^6.9.12",
+    "nodemon": "^3.1.0",
+    "socket.io": "^3.1.2",
+    "socket.io-client": "^4.7.5"
+  }
+}
