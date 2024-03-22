@@ -2,13 +2,16 @@ const Transaction = require("../../Transaction/Model/transactionModel");
 const Wallet = require("../Model/walletModel");
 const Cart = require("../../Cart/Model/cartModel");
 const { default: mongoose } = require("mongoose");
+
 const successResponse = (res, data, statusCode = 200, message = "Success") => {
   res.status(statusCode).json({ message, data });
 };
 const errorResponse = (res, statusCode = 500, message = "Server Error") => {
   res.status(statusCode).json({ message });
 };
+
 //====================== Top Up ========================//
+
 const topUp = async (req, res) => {
   const db = mongoose.connection;
   const session = await db.startSession();
@@ -49,7 +52,9 @@ const topUp = async (req, res) => {
     errorResponse(res, err.messag);
   }
 };
+
 //===================== Amount Withdraw From Wallet ======================//
+
 const withdraw = async (req, res) => {
   const { userId, amount } = req.body;
   try {
@@ -78,6 +83,8 @@ const withdraw = async (req, res) => {
     errorResponse(res, 500, "Withdrawal failed");
   }
 };
+
+//==================== Transaction =========================//
 
 const makeTransaction = async (req, res) => {
   const session = await mongoose.startSession();
@@ -125,7 +132,9 @@ const makeTransaction = async (req, res) => {
     errorResponse(res, 500, "Internal Server Error");
   }
 };
+
 //=========================== Remaining Balance =======================//
+
 const balance = async (req, res) => {
   const id = req.params.user;
   try {
@@ -144,7 +153,9 @@ const balance = async (req, res) => {
     return errorResponse(res, 500, "Failed to retrieve balance");
   }
 };
+
 //========================== Transaction ==========================//
+
 const transactions = async (req, res) => {
   try {
     console.log("Req", req.user);
@@ -160,6 +171,7 @@ const transactions = async (req, res) => {
     errorResponse(res, 500, "Failed to retrieve transactions");
   }
 };
+
 module.exports = {
   topUp,
   withdraw,

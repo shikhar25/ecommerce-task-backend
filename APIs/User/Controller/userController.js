@@ -105,6 +105,8 @@ const signIn = async (req, res) => {
   }
 };
 
+//===================== Get User =================//
+
 const getUser = async (req, res) => {
   try {
     const authHeader = req.header("Authorization");
@@ -129,6 +131,7 @@ const getUser = async (req, res) => {
     });
   }
 };
+
 //=================== Password Reset Link ===================//
 
 const passwordResetMail = async (req, res, token) => {
@@ -194,13 +197,14 @@ const forgotPassword = async (req, res) => {
 };
 
 //********** Function To Validate Email **********************//
+
 function isValidEmail(email) {
-  // Use a regular expression to validate the email format
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(email);
 }
 
 //************ Function to generate a unique token *************//
+
 const generateToken = async () => {
   return crypto.randomBytes(20).toString("hex");
 };
