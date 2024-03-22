@@ -2,13 +2,16 @@ const Cart = require("../Model/cartModel");
 const Wallet = require("../../Wallet/Model/walletModel");
 const Transaction = require("../../Transaction/Model/transactionModel");
 const Product = require("../../Product/Model/productModel");
+
 const successResponse = (res, data, statusCode = 200, message = "Success") => {
   res.status(statusCode).json({ message, data });
 };
 const errorResponse = (res, statusCode = 500, message = "Server Error") => {
   res.status(statusCode).json({ message });
 };
+
 //==================== Add Product to Cart =================//
+
 const addToCart = async (req, res) => {
   const { productId, quantity } = req.body;
   const userId = req.user._id;
@@ -39,7 +42,9 @@ const addToCart = async (req, res) => {
     errorResponse(res, 500, "Failed to add product to cart", err.message);
   }
 };
+
 //================= Get User Cart Details ================//
+
 const getUserCart = async (req, res) => {
   try {
     const userId = req.params.userId;
@@ -53,6 +58,8 @@ const getUserCart = async (req, res) => {
     errorResponse(res, 500, err.message, "Failed to retrieve user cart");
   }
 };
+
+//========================= Remove From Cart =========================//
 
 const removeFromCart = async (req, res, next) => {
   const { productId } = req.params;
@@ -70,6 +77,9 @@ const removeFromCart = async (req, res, next) => {
     return errorResponse(res, 500, "Failed to remove product from cart");
   }
 };
+
+//======================== Checkout =========================//
+
 const checkout = async (req, res) => {
   const userId = req.user._id;
   try {
